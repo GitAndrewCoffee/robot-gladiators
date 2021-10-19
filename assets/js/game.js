@@ -1,17 +1,34 @@
-var playerName = window.prompt("What is your robot's name?");
-var playerHealth = 100;
-var playerAttack = 10;
+//Functions
 
-// You can also log multiple values at once like this
-console.log(playerName, playerAttack, playerHealth);
+//fightPrompt gives the user a choice to fight
 
-var enemyName = "Roborto";
-var enemyHealth = 50;
-var enemyAttack = 12;
+var fightPrompt = function() {
+
+  // Ask if player would like to fight
+  var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+
+  if (promptFight == 'fight' || promptFight == 'FIGHT') {
+    
+    fight();
+
+  } else if (promptFight =='skip' || promptFight == 'SKIP') {
+
+    var promptFight = window.prompt("Invalid Entry, please enter 'FIGHT' or 'SKIP' to choose.");
+
+    fightPrompt();
+
+  } else {
+
+    window.alert("Peace Out");
+
+  }
+
+};
+
+//Fight processes the battle
 
 var fight = function() {
-  window.alert("Welcome to Robot Gladiators!");
-
+  
   //Process attacks
 
     console.log ("Player Attack Pre-event log: " + "enemyHealth = " + enemyHealth + " and playerAttack = " +playerAttack);
@@ -63,6 +80,34 @@ var fight = function() {
       else {
         window.alert(enemyName + " still has " + enemyHealth + " health left.");
       }
+
+      var logReturnedValue = console.log ("Seeing if the log returns anything");
+      console.log (logReturnedValue);
 };
 
-fight();
+
+//
+// Execution
+//
+
+//Welcome Message
+window.alert("Welcome to Robot Gladiators!");
+
+//Define Player Robot
+var playerName = window.prompt("What is your robot's name?");
+var playerHealth = 100;
+var playerAttack = 10;
+
+// You can also log multiple values at once like this
+console.log(playerName, playerAttack, playerHealth);
+
+//Define Enemy Robot
+var enemyName = "Mr. Roboto";
+var enemyHealth = 50;
+var enemyAttack = 12;
+
+fightPrompt();
+
+
+
+
